@@ -18,7 +18,9 @@ const Signup = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                form.reset()
             })
+            .catch(error => console.error('error:', error))
     }
     return (
         <div>
@@ -54,8 +56,6 @@ const Signup = () => {
                                 <button className="btn btn-outline">Register</button>
                             </div>
                         </form>
-
-                        <button className="btn btn-outline"><FaGoogle className='mx-2' />SignIn With Google</button>
                     </div>
                 </div>
             </div>

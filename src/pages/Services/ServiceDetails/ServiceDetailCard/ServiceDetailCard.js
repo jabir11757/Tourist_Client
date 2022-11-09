@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { FaStar } from "react-icons/fa";
 import './ServiceDetailCard.css'
 
@@ -15,16 +15,12 @@ const ServiceDetailCard = () => {
             <div className="card-body">
                 <h2 className="card-title">{serviceName}</h2>
                 <p>{description}</p>
-                <div className="flex justify-around">
+                <div className="flex justify-between">
                     <div>
                         <p className='text-success'><strong>{price}</strong></p>
                     </div>
-                    <div className='flex'>
-                        <FaStar className='mt-1 me-2' />
-                        <p className='text-success'>{rating}</p>
-                    </div>
                     <div>
-                        <button className="btn btn-primary">Listen</button>
+                        <button className="btn btn-outline"><Link to='/services'>Back</Link></button>
                     </div>
                 </div>
             </div>

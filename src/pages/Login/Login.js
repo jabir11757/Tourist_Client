@@ -1,10 +1,16 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { login } = useContext(AuthContext);
+    const { login, googleSignIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+
+    const googleProvider = new GoogleAuthProvider();
 
     const handleSubmitLogin = (event) => {
         event.preventDefault();
@@ -16,8 +22,20 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                form.reset()
+                navigate(from, { replace: true })
             })
+            .catch(error => console.error('error:', error))
         console.log(email, password)
+    }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => console.error('error:', error))
     }
 
     return (
@@ -48,7 +66,7 @@ const Login = () => {
                                 <button className="btn btn-outline">Log In</button>
                             </div>
                         </form>
-                        <button className="btn btn-outline"><FaGoogle className='mx-2' />SignIn With Google</button>
+                        <button onClick={handleGoogleSignIn} className="btn btn-outline"><FaGoogle className='mx-2' />SignIn With Google</button>
                     </div>
                 </div>
             </div>

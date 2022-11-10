@@ -1,7 +1,8 @@
 import React from 'react';
 
-const ReviewCard = ({ review }) => {
-    const { serviceName, message } = review;
+const ReviewCard = ({ review, handleDelete, handleUpdate }) => {
+    const { serviceName, message, _id } = review;
+
     return (
         <tr>
             <td>
@@ -16,10 +17,10 @@ const ReviewCard = ({ review }) => {
             </td>
             <td> {message}</td>
             <th>
-                <button className="btn btn-ghost btn-xs">Delete</button>
+                <button onClick={() => handleDelete(_id)} className="btn btn-ghost btn-xs">Delete</button>
             </th>
             <th>
-                <button className="btn btn-ghost btn-xs">Update</button>
+                <button onClick={() => handleUpdate(_id)} className="btn btn-ghost btn-xs">Update</button>
             </th>
         </tr>
     );

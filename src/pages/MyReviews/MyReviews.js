@@ -16,11 +16,53 @@ const MyReviews = () => {
                 // const selectedReview = user?.filter(usr => usr.email === user.email);
                 setMyReview(data)
 
-                console.log(data)
+                // console.log(data)
 
 
             })
     }, [user])
+
+    const handleUpdate = (id) => {
+        console.log(id)
+        fetch(`http://localhost:5000/reviews/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ status: 'Updated' })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    const remaining = myReview.filter(rvw => rvw._id !== id);
+                    const updating = myReview.find(rvw => rvw._id === id);
+                    updating.status = 'Updated';
+
+                    const newReviews = [updating, ...remaining];
+                    setMyReview(newReviews);
+                }
+            })
+    }
+
+    const handleDelete = (id) => {
+        const proceed = window.confirm('Are you sure, you want to delete?');
+        if (proceed) {
+            fetch(`http://localhost:5000/reviews/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        alert('Deleted!');
+                        const remaining = myReview.filter(rvw => rvw._id !== id);
+                        setMyReview(remaining)
+                    }
+                })
+        }
+
+    }
     return (
         <div>
             My reviews: {myReview.length}
@@ -38,7 +80,12 @@ const MyReviews = () => {
                     </thead>
                     <tbody>
                         {
-                            myReview.map(review => <ReviewCard key={review._id} review={review} />)
+                            myReview.map(review => <ReviewCard
+                                key={review._id}
+                                review={review}
+                                handleDelete={handleDelete}
+                                handleUpdate={handleUpdate}
+                            />)
                         }
                     </tbody>
                 </table>

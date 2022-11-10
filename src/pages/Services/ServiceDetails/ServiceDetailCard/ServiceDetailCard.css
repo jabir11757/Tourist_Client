@@ -1,6 +1,10 @@
+.card {
+    margin: 20px;
+}
+
 .details-card img {
-    width: 100vw;
-    height: 50vh;
+    width: 250vw;
+    height: 60vh;
     padding: 2em;
     border-radius: 50px;
 }

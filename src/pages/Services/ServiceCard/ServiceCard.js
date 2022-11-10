@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom';
 import './ServiceCard.css'
 
 const ServiceCard = ({ services }) => {
+
     const { _id, serviceName, price, image, description } = services;
 
-
     return (
-
         <div className="card card-compact w-full h-full bg-base-100 shadow-xl p-5">
             <figure><img className='service-image' src={image} alt="service" /></figure>
             <div className="card-body">
@@ -19,7 +18,7 @@ const ServiceCard = ({ services }) => {
                 </div>
             </div>
         </div>
-    );
+    )
 };
 
 export default ServiceCard;

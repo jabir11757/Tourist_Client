@@ -1,16 +1,24 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './ServiceDetails.css'
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import ReviewSection from '../ReviewSection/ReviewSection';
 
 
 
 const ServiceDetails = () => {
     const details = useLoaderData();
     const { user } = useContext(AuthContext);
+    const [userReview, setUserReview] = useState([])
 
 
     const { _id, serviceName, price, description, image } = details;
+
+    useEffect(() => {
+        fetch('http://localhost:5000/reviews')
+            .then(res => res.json())
+            .then(data => setUserReview(data))
+    }, [])
 
     const handlePlaceOrder = (event) => {
         event.preventDefault();
@@ -24,6 +32,7 @@ const ServiceDetails = () => {
 
         const review = {
             service_id: _id,
+            photoUrl: user?.photoURL,
             serviceName,
             name,
             message
@@ -78,14 +87,11 @@ const ServiceDetails = () => {
                     <table className="table-auto">
                         <thead>
                             <tr>
-                                <th>Song</th>
-                                <th>Artist</th>
+                                {
+                                    userReview.map(uReview => <ReviewSection key={uReview._id} uReview={uReview} />)
+                                }
                             </tr>
                         </thead>
-                        <tbody>
-
-
-                        </tbody>
                     </table>
                 </div>
 

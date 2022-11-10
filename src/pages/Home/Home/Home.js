@@ -6,7 +6,7 @@ import ShortServices from '../ShortServices/ShortServices';
 const Home = () => {
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/home-services')
+        fetch('https://assignment-for-tourism-server.vercel.app/home-services')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])

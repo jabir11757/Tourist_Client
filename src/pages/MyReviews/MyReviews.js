@@ -8,7 +8,7 @@ const MyReviews = () => {
     const [myReview, setMyReview] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://assignment-for-tourism-server.vercel.app/reviews')
             .then(res => res.json())
             .then(data => {
 
@@ -24,7 +24,7 @@ const MyReviews = () => {
 
     const handleUpdate = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/reviews/${id}`, {
+        fetch(`https://assignment-for-tourism-server.vercel.app/reviews/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -48,7 +48,7 @@ const MyReviews = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure, you want to delete?');
         if (proceed) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://assignment-for-tourism-server.vercel.app/reviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -65,7 +65,6 @@ const MyReviews = () => {
     }
     return (
         <div>
-            My reviews: {myReview.length}
 
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">

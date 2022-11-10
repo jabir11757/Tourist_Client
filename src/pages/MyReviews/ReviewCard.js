@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ReviewCard = ({ review, handleDelete, handleUpdate }) => {
-    const { serviceName, message, _id } = review;
+    const { serviceName, message, _id, status } = review;
 
     return (
         <tr>
@@ -20,7 +20,7 @@ const ReviewCard = ({ review, handleDelete, handleUpdate }) => {
                 <button onClick={() => handleDelete(_id)} className="btn btn-ghost btn-xs">Delete</button>
             </th>
             <th>
-                <button onClick={() => handleUpdate(_id)} className="btn btn-ghost btn-xs">Update</button>
+                <button onClick={() => handleUpdate(_id)} className="btn btn-ghost btn-xs">{status ? status : 'updating'}</button>
             </th>
         </tr>
     );

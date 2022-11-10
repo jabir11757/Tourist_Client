@@ -59,9 +59,9 @@ const ServiceDetails = () => {
 
 
     return (
-        <div className='service-details'>
+        <div className='grid col-span-1 lg:grid-cols-2 sm:grid-cols-1 service-details'>
             {/* <ServiceDetailCard /> */}
-            <div className="card lg:card-side bg-base-100 shadow-xl">
+            <div className="card col-span-1 lg:card-side bg-base-100 shadow-xl" >
                 <div className='details-card'>
                     <img src={image} alt="Album" />
 

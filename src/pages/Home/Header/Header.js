@@ -31,7 +31,7 @@ const Header = () => {
                             <>
                                 <li onClick={handleLogout}><Link>Logout</Link></li>
                                 <div className='d-flex align-items-center'>
-                                    <img className='me-4 rounded-xl mt-3' style={{ height: '25px' }} roundedCircle src={user?.photoURL} alt='' />
+                                    <img className='me-4 rounded-xl mt-3' style={{ height: '25px' }} src={user?.photoURL} alt='' />
                                 </div>
                             </>
 

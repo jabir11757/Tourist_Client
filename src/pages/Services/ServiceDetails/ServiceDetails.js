@@ -17,7 +17,10 @@ const ServiceDetails = () => {
 
         const form = event.target;
         const name = form.name.value;
+        const email = form.email.value;
         const message = form.message.value;
+
+        console.log(name, email, message)
 
         const review = {
             service_id: _id,
@@ -25,6 +28,23 @@ const ServiceDetails = () => {
             name,
             message
         }
+
+        fetch('http://localhost:5000/reviews', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    alert('Review placed successfully!')
+                    form.reset()
+                }
+            })
+            .catch(err => console.error(err))
 
     }
 
@@ -55,7 +75,7 @@ const ServiceDetails = () => {
                 <h2 className='text-2xl font-bold text-center'>Reviews</h2>
 
                 <div className='review-card'>
-                    <table class="table-auto">
+                    <table className="table-auto">
                         <thead>
                             <tr>
                                 <th>Song</th>

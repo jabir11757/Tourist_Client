@@ -23,6 +23,7 @@ const Header = () => {
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/services'>Services</Link></li>
                     <li><Link to='/reviews'>My Reviews</Link></li>
+                    <li><Link to='/addServices'>Add Services</Link></li>
                     <li><Link to='/blogs'>Blogs</Link></li>
 
                     {

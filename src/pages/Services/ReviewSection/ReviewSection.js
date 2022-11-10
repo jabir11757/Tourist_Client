@@ -5,20 +5,30 @@ import './ReviewSection.css'
 
 const ReviewSection = ({ uReview }) => {
     const { name, message, photoURL } = uReview;
-    console.log(photoURL)
+    // const photo = uReview?.photoURL;
+    // console.log(photo)
 
 
     return (
-        <div className='text-center m-5'>
+        <div className='text-center m-3'>
             <div className='flex'>
-                <div className='image'>
-                    <img className='rounded-xl' style={{ height: '25px' }} src="https://lh3.googleusercontent.com/a/ALm5wu19rGYaCZZR8EU6DuT0R2mMu79Is__GZuPxyj7cNA=s96-c" alt='' />
-                </div>
-                <th className='ms-2'>{name}</th>
+                {
+                    photoURL ? <>
+                        <div className="avatar">
+                            <div className="image w-4 rounded-full">
+                                <img src={photoURL} alt='' />
+                            </div>
+                        </div>
+                    </> :
+
+                        <FaUserAlt />
+
+                }
+                <h1 className='ms-2'><strong>{name}</strong></h1>
             </div>
             {/* <th>{message}</th> */}
             <tbody className='message'>
-                <tr>{message}</tr>
+                <h1><small>{message}</small></h1>
             </tbody>
 
         </div>

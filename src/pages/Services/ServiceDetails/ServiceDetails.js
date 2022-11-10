@@ -33,6 +33,7 @@ const ServiceDetails = () => {
         const review = {
             service_id: _id,
             photoUrl: user?.photoURL,
+            email: user?.email,
             serviceName,
             name,
             message

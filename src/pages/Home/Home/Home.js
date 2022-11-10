@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import JoinSurvey from '../../JoinSurvey/JoinSurvey';
 import Banner from '../Banner/Banner';
 import ShortServices from '../ShortServices/ShortServices';
 
@@ -23,6 +24,8 @@ const Home = () => {
             <div className='flex justify-center my-5'>
                 <button className='btn'><Link to='/services'>See All</Link></button>
             </div>
+
+            <JoinSurvey />
 
         </div>
     );

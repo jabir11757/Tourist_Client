@@ -1,4 +1,5 @@
 import React from 'react';
+import './ReviewCard.css'
 
 const ReviewCard = ({ review, handleDelete, handleUpdate }) => {
     const { serviceName, message, _id, status } = review;

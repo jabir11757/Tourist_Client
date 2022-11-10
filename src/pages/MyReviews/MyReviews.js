@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import ReviewCard from './ReviewCard';
+import './MyReviews.css'
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext);
@@ -64,7 +65,7 @@ const MyReviews = () => {
 
     }
     return (
-        <div>
+        <div className='review-Card'>
 
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">

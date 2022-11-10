@@ -8,3 +8,13 @@
 .image {
     margin-right: 10px;
 }
+
+.name {
+    margin-left: .5em;
+    margin-top: -.4em;
+}
+
+.message h1 {
+    margin-left: 1.5em;
+    margin-top: -.20em;
+}

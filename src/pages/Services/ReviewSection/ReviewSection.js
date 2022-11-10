@@ -21,10 +21,10 @@ const ReviewSection = ({ uReview }) => {
                         </div>
                     </> :
 
-                        <FaUserAlt />
+                        <FaUserAlt className=' h-3' />
 
                 }
-                <h1 className='ms-2'><strong>{name}</strong></h1>
+                <h1 className='name'><strong>{name}</strong></h1>
             </div>
             {/* <th>{message}</th> */}
             <tbody className='message'>
